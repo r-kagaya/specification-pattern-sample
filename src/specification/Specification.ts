@@ -1,16 +1,16 @@
 
 interface ISpecification {
     isSatisfiedBy(param: { [key: string]: string; }): boolean;
-    and(other: ISpecification): ISpecification;
-    or(other: ISpecification): ISpecification;
+    and(spec: ISpecification): ISpecification;
+    or(spec: ISpecification): ISpecification;
 }
 
 abstract class Specification implements ISpecification {
-    public and(other: Specification): Specification {
-      return new AndSpecification(this, other);
+    public and(spec: Specification): Specification {
+      return new AndSpecification(this, spec);
     }
-    public or(other: Specification): Specification {
-      return new OrSpecification(this, other);
+    public or(spec: Specification): Specification {
+      return new OrSpecification(this, spec);
     }
 
     public abstract isSatisfiedBy(param: { [key: string]: string; }): boolean;
