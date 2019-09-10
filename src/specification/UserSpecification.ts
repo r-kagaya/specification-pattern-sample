@@ -2,8 +2,11 @@ import Specification from './Specification';
 
 class UserSpecification extends Specification {
     public isSatisfiedBy(param: { [key: string]: string; }): boolean {
-        return param['name'] !== "" && param['email'] !== ""
+        if (param['name'] == "" || param['email'] == "") {
+            return false;
+        }
+
+        return param['email'].endsWith('@gmail.com');
     }
 }
-
 export default UserSpecification;
